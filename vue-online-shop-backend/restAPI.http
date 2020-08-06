@@ -1,0 +1,25 @@
+### POST /api/v1/manufacturers
+
+POST http://localhost:3000/api/v1/manufacturers HTTP/1.1
+content-type: application/json
+
+{
+  "name": "IPone"
+}
+
+### GET /api/v1/manufacturers
+
+GET http://localhost:3000/api/v1/manufacturers HTTP/1.1
+
+### PUT /api/v1/manufacturers/:id
+
+PUT http://localhost:3000/api/v1/manufacturers/5f2c6955718bb172a96cbd8b HTTP/1.1
+content-type: application/json
+
+{
+  "name": "OnePlus"
+}
+
+### DELETE /api/v1/manufacturers/:id
+
+DELETE http://localhost:3000/api/v1/manufacturers/ HTTP/1.1

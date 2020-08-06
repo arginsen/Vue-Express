@@ -1,22 +1,24 @@
 .DS_Store
-vue-online-shop-frontend/node_modules
+**/node_modules/
 
 # local env files
-vue-online-shop-frontend/.env.local
-vue-online-shop-frontend/.env.*.local
+.env.local
+.env.*.local
 
 # Log files
-vue-online-shop-frontend/npm-debug.log*
-vue-online-shop-frontend/yarn-debug.log*
-vue-online-shop-frontend/yarn-error.log*
-vue-online-shop-frontend/pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Editor directories and files
-vue-online-shop-frontend/.idea
-vue-online-shop-frontend/.vscode
-vue-online-shop-frontend/*.suo
-vue-online-shop-frontend/*.ntvs*
-vue-online-shop-frontend/*.njsproj
-vue-online-shop-frontend/*.sln
-vue-online-shop-frontend/*.sw?
-vue-online-shop-frontend/node_modules
+.idea
+.vscode
+.http
+.rest
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+**/node_modules/
