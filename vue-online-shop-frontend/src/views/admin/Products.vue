@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div class="title">
-      <h1>This is Admin</h1>
+  <form @submit.prevent="saveProduct">
+    <div class="form-group new-button">
+      <button class="button">Add Product</button>
     </div>
-  </div>
+  </form>
 </template>
