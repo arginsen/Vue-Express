@@ -1,13 +1,13 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const mongoose = require('mongoose');
+import * as createError from 'http-errors';
+import * as express from 'express';
+import * as path from 'path';
+import * as cookieParser from 'cookie-parser';
+import * as logger from 'morgan';
+import * as mongoose from 'mongoose';
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-const api = require('./routes/api');
+import indexRouter from './routes/index';
+import usersRouter from './routes/users';
+import api from './routes/api';
 
 var app = express();
 

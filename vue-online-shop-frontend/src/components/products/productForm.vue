@@ -42,11 +42,10 @@
         <label>Image</label>
         <input
           type="text"
-          lass="form-control"
+          class="form-control"
           placeholder="Image"
           v-model="model.image"
-          name="image"
-          class="form-control" />
+          name="image" />
       </div>
       <div class="form-group">
         <label>Description</label>

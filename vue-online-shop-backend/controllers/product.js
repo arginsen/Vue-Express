@@ -1,5 +1,4 @@
-const Model = require('../model');
-const { Product } = Model;
+import { Product } from '../model';
 
 const productController = {
   all(req, res) {
@@ -44,4 +43,4 @@ const productController = {
   }
 }
 
-module.exports = productController;
+export { productController };

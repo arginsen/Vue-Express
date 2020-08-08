@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <div class="title">
-      <h1>This is Admin/New</h1>
-    </div>
-  </div>
+  <product-form
+    @save-product="addProduct"
+    :model="model"
+    :manufacturers="manufacturers"
+  >
+  </product-form>
 </template>
 
 <script>
-import ProductForm from '@/components/products/ProductForm.vue';
+import ProductForm from '@/components/products/productForm.vue';
 
 export default {
   data() {

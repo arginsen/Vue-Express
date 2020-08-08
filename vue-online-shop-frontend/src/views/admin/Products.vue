@@ -1,7 +1,20 @@
 <template>
-  <form @submit.prevent="saveProduct">
-    <div class="form-group new-button">
-      <button class="button">Add Product</button>
+  <div>
+    <div class="title">
+      <h1>This is Admin</h1>
     </div>
-  </form>
+    <div class="body">
+      {{ product.name }}
+    </div>
+  </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    product() {
+      return this.$store.state.products[0];
+    },
+  },
+};
+</script>
