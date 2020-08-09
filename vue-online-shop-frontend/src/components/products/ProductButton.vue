@@ -5,9 +5,17 @@
   </div>
 </template>
 
+<style scoped>
+.button {
+  width: 100%;
+  height: 30px;
+  box-shadow: rgba(0, 0, 0, .1) 2px 4px 7px;
+}
+</style>
+
 <script>
 export default {
-  props: ['product'],
+  props: ['product'], // 从 item 中获取 product 的值
   computed: {
     isAdding() {
       /* eslint no-underscore-dangle: 0 */

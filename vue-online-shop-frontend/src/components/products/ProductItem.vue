@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <div class="product">
-      <p class="product__name">产品名称：{{product.name}}</p>
-      <p class="product__description">介绍：{{product.description}}</p>
-      <p class="product__price">价格：{{product.price}}</p>
-      <p class="product.manufacturer">生产厂商：{{product.manufacturer.name}}</p>
-      <img :src="product.image" alt="" class="product__image">
+  <div class="product">
+    <div class="box-content">
+      <router-link :to="'/detail/' + product._id" class="product-link">
+        <img :src="product.image" alt="" class="product__image">
+      </router-link>
+        <p class="product__name">产品名称：{{product.name}}</p>
+        <p class="product__description">介绍：{{product.description}}</p>
+        <p class="product__price">价格：{{product.price}}</p>
+        <p class="product.manufacturer">生产厂商：{{product.manufacturer.name}}</p>
       <product-button :product="product"></product-button>
     </div>
   </div>
@@ -13,12 +15,23 @@
 
 <style>
 .product {
-  border-bottom: 1px solid black;
+  border-top: 1px solid #f4f4f4;
+  padding: 30px;
+}
+
+.box-content {
+  width: 450px;
+  margin: 0 auto;
+  padding: 30px;
+  line-height: 1.2rem;
+  box-shadow: rgb(153, 153, 153) 2px 4px 7px;
+  border-radius: 6px;
 }
 
 .product__image {
-  width: auto;
-  height: 200px;
+  width: 80%;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, .2) 2px 4px 7px;
 }
 </style>
 
@@ -27,7 +40,7 @@ import ProductButton from './ProductButton.vue';
 
 export default {
   name: 'product-item',
-  props: ['product'],
+  props: ['product'], // list 传入 product
   components: {
     'product-button': ProductButton,
   },

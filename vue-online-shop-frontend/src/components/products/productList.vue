@@ -11,6 +11,14 @@
   </div>
 </template>
 
+<style scoped>
+.products {
+  padding: 30px;
+  border-bottom: 1px solid #f4f4f4;
+  margin: 50px auto;
+}
+</style>
+
 <script>
 import ProductItem from './ProductItem.vue';
 
@@ -24,8 +32,9 @@ export default {
   },
   computed: {
     // a computed getter
+    // get products, delivery product to child-component by v-for
     products() {
-      return this.$store.state.products;
+      return this.$store.getters.allProducts;
     },
   },
   components: {

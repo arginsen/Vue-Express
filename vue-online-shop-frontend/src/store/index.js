@@ -22,8 +22,8 @@ export default new Vuex.Store({
     // all manufacturers
     manufacturers: [],
   },
+  // modify & save state with mutation
   mutations: {
-    // modify & save state with mutation
     ADD_TO_CART(state, payload) {
       const { product } = payload;
       state.cart.push(product);
@@ -46,9 +46,30 @@ export default new Vuex.Store({
       // commit products to state
       state.products = products;
     },
+    PRODUCT_BY_ID(state) {
+      state.showLoader = true;
+    },
+    PRODUCT_BY_ID_SUCCESS(state, payload) {
+      state.showLoader = false;
+
+      const { product } = payload;
+      state.product = product;
+    },
   },
+  // get data of state with getters
+  getters: {
+    allProducts(state) {
+      return state.products;
+    },
+    productById: (state, getters) => (id) => {
+      if (getters.allProducts.length > 0) {
+        return getters.allProducts.filter((p) => p._id === id)[0];
+      }
+      return state.product;
+    },
+  },
+  // get backend data with asynchronous operation
   actions: {
-    // get backend data with asynchronous operation
     allProducts({ commit }) {
       // commit mutation AP
       commit('ALL_PRODUCTS');
@@ -58,6 +79,16 @@ export default new Vuex.Store({
         console.log('response', response);
         commit('ALL_PRODUCTS_SUCCESS', {
           products: response.data,
+        });
+      });
+    },
+    productById({ commit }, payload) {
+      commit('PRODUCT_BY_ID');
+
+      const { productId } = payload;
+      axios.get(`${API_BASE}/products/${productId}`).then((response) => {
+        commit('PRODUCT_BY_ID_SUCCESS', {
+          product: response.data,
         });
       });
     },
