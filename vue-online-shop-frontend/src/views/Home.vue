@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import ProductList from '@/components/products/productList.vue';
+import ProductList from '@/components/products/ProductList.vue';
 
 export default {
   name: 'Home',
   data() {
     return {
-      msg: 'In Stock',
+      msg: 'Welcome to the Home Page',
     };
   },
   components: {

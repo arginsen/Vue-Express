@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ProductForm from '@/components/products/productForm.vue';
+import ProductForm from '@/components/products/ProductForm.vue';
 
 export default {
   data() {
