@@ -33,6 +33,10 @@
   margin-bottom: 10px;
   box-shadow: rgb(153, 153, 153) 2px 4px 7px;
 }
+
+.product-details__price-cart p {
+  color: lightcoral;
+}
 </style>
 
 <script>

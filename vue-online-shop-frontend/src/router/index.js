@@ -2,6 +2,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
 
+// use webpackChunkName，component achieve lazy-loaded
+// import Products from '@/views/admin/Products.vue';
+// import Edit from '@/views/admin/Edit.vue';
+// import Manufacturers from '@/views/admin/Manufacturers.vue';
+// import NewManufacturers from '@/views/admin/NewManufacturers.vue';
+// import EditManufacturers from '@/views/admin/EditManufacturers.vue';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -42,6 +49,21 @@ const routes = [
         path: 'edit/:id',
         name: 'Edit',
         component: () => import(/* webpackChunkName: "Edit" */ '../views/admin/Edit.vue'),
+      },
+      {
+        path: 'manufacturers',
+        name: 'Manufacturers',
+        component: () => import(/* webpackChunkName: "Manufacturers" */ '../views/admin/Manufacturers.vue'),
+      },
+      {
+        path: 'manufacturers/new',
+        name: 'NewManufacturers',
+        component: () => import(/* webpackChunkName: "NewManufacturers" */ '../views/admin/NewManufacturers.vue'),
+      },
+      {
+        path: 'manufacturers/edit/:id',
+        name: 'EditManufacturers',
+        component: () => import(/* webpackChunkName: "EditManufacturers" */ '../views/admin/EditManufacturers.vue'),
       },
     ],
   },

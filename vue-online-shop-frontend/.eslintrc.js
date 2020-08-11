@@ -13,7 +13,9 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'linebreak-style': ["off", "windows"],
-    'no-underscore-dangle': ["error", { "allow": ["_place"] }],
+    "linebreak-style": ["off", "windows"],
+    "no-underscore-dangle": "off",
+    "no-restricted-globals": ["error", "event", "fdescribe"],
+    "no-alert": "off",
   },
 };
