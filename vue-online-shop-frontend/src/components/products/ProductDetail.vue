@@ -13,7 +13,7 @@
       </div>
       <div class="product-details__price-cart">
         <p>￥{{product.price}}</p>
-        <product-button :product="product"></product-button>
+        <product-button :id="product._id"></product-button>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
 <style>
 .product-details {
   margin: 0 auto;
-  width: 500px;
+  max-width: 550px;
   padding: 30px;
   border: 1px solid #f4f4f4;
 }

@@ -1,44 +1,72 @@
 <template>
-  <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>名称</th>
-          <th>价格</th>
-          <th>制造商</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="product in products" :key="product._id">
-          <td>{{product.name}}</td>
-          <td>{{product.price}}</td>
-          <td>{{product.manufacturer.name}}</td>
-          <td class="modify"><router-link :to="'/admin/edit/' + product._id">修改</router-link></td>
-          <td class="remove"><a @click="removeProduct(product._id)" href="#">删除</a></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="table-products">
+    <a-table
+      :columns="columns"
+      :data-source="products"
+      :pagination="false"
+      bordered>
+      <template slot="name" slot-scope="text">
+        <span class="table-name">{{ text }}</span>
+      </template>
+      <template slot="operation" slot-scope="text, record">
+        <a-button-group>
+          <a-button
+            type="primary"
+            size="small">
+            <router-link :to="'/admin/edit/' + record._id" class="edit">
+              <a-icon type="form" />
+            </router-link>
+          </a-button>
+          <a-button
+            @click="removeProduct(record._id)"
+            type="danger"
+            size="small">
+              <a-icon type="delete" />
+          </a-button>
+        </a-button-group>
+      </template>
+    </a-table>
   </div>
 </template>
 
 <style>
-table {
+.table-products {
+  max-width: 500px;
   margin: 0 auto;
 }
 
-.modify {
-  color: blue;
-}
-
-.remove a {
-  color: red;
+.table-name {
+  color: cornflowerblue;
 }
 </style>
 
 <script>
 export default {
+  data() {
+    return {
+      columns: [
+        {
+          title: 'Name',
+          dataIndex: 'name',
+          scopedSlots: { customRender: 'name' },
+        },
+        {
+          title: 'Price',
+          dataIndex: 'price',
+        },
+        {
+          title: 'Manufacturer',
+          dataIndex: 'manufacturer.name',
+        },
+        {
+          title: 'Operation',
+          dataIndex: 'operation',
+          scopedSlots: { customRender: 'operation' },
+        },
+      ],
+      data: this.products,
+    };
+  },
   created() {
     if (this.products.length === 0) {
       this.$store.dispatch('allProducts');
@@ -46,7 +74,12 @@ export default {
   },
   computed: {
     products() {
-      return this.$store.getters.allProducts;
+      return this.$store.getters.allProducts
+        .map((value, index) => {
+          const product = value;
+          product.key = `'${index}'`;
+          return product;
+        });
     },
   },
   methods: {

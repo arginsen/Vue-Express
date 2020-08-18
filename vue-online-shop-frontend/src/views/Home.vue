@@ -1,13 +1,33 @@
 <template>
   <div>
-    <div class="title">
-      <h1>{{msg}}</h1>
+    <div class="container">
+      <product-carousel></product-carousel>
+      <product-list></product-list>
     </div>
-    <product-list></product-list>
+    <footer class="footer">
+      <span style="display:block">© 2020 淘机客 中国互联网举报中心</span>
+      京ICP证1401号京ICP备125439号-3京公网安备
+    </footer>
   </div>
 </template>
 
+<style>
+.container {
+  margin-top: 20px;
+  /* margin-bottom: 20px; */
+}
+
+.footer {
+  margin-top: 20px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #999;
+  background: #eee;
+}
+</style>
+
 <script>
+import ProductCarousel from '@/components/products/ProductCarousel.vue';
 import ProductList from '@/components/products/ProductList.vue';
 
 export default {
@@ -19,6 +39,7 @@ export default {
   },
   components: {
     'product-list': ProductList,
+    'product-carousel': ProductCarousel,
   },
 };
 </script>

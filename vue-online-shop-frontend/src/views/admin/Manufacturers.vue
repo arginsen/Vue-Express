@@ -1,44 +1,61 @@
 <template>
-  <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>制造商</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="manufacturer in manufacturers" :key="manufacturer._id">
-          <td>{{manufacturer.name}}</td>
-          <td class="modify">
-            <router-link :to="'/admin/manufacturers/edit/' + manufacturer._id">修改</router-link>
-          </td>
-          <td class="remove">
-            <a @click="removeManufacturer(manufacturer._id)" href="#">删除</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="table-manufacturers">
+    <a-table
+      class=""
+      :columns="columns"
+      :data-source="manufacturers"
+      :pagination="false"
+      bordered>
+      <template slot="name" slot-scope="text">
+        <span class="table-name">{{ text }}</span>
+      </template>
+      <template slot="operation" slot-scope="text, record">
+        <a-button-group>
+          <a-button
+            type="primary"
+            size="small">
+            <router-link :to="'/admin/manufacturers/edit/' + record._id" class="edit">
+              <a-icon type="form" />
+            </router-link>
+          </a-button>
+          <a-button
+            @click="removeManufacturer(record._id)"
+            type="danger"
+            size="small">
+              <a-icon type="delete" />
+          </a-button>
+        </a-button-group>
+      </template>
+    </a-table>
   </div>
 </template>
 
 <style>
-table {
+.table-manufacturers {
+  max-width: 300px;
   margin: 0 auto;
-}
-
-.modify {
-  color: blue;
-}
-
-.remove a {
-  color: red;
 }
 </style>
 
 <script>
 export default {
+  data() {
+    return {
+      columns: [
+        {
+          title: 'Name',
+          dataIndex: 'name',
+          scopedSlots: { customRender: 'name' },
+        },
+        {
+          title: 'Operation',
+          dataIndex: 'operation',
+          scopedSlots: { customRender: 'operation' },
+        },
+      ],
+      data: this.manufacturers,
+    };
+  },
   created() {
     if (this.manufacturers.length === 0) {
       this.$store.dispatch('allManufacturers');
@@ -46,7 +63,12 @@ export default {
   },
   computed: {
     manufacturers() {
-      return this.$store.getters.allManufacturers;
+      return this.$store.getters.allManufacturers
+        .map((value, index) => {
+          const manufacturer = value;
+          manufacturer.key = `'${index}'`;
+          return manufacturer;
+        });
     },
   },
   methods: {

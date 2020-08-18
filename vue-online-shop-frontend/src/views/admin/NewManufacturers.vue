@@ -1,8 +1,7 @@
 <template>
   <manufacturer-form
     @save-manufacturer="addManufacturer"
-    :model="model"
-  >
+    :model="model">
   </manufacturer-form>
 </template>
 
@@ -10,10 +9,10 @@
 import ManufacturerForm from '@/components/manufacturers/ManufacturerForm.vue';
 
 export default {
-  computed: {
-    model() {
-      return {};
-    },
+  data() {
+    return {
+      model: {},
+    };
   },
   methods: {
     addManufacturer(model) {

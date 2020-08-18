@@ -99,7 +99,7 @@ export const manufacturerActions = {
     commit(MANUFACTURER_BY_ID);
 
     const { manufacturerId } = payload;
-    axios.get(`${API_BASE}/manufacturer/${manufacturerId}`).then((response) => {
+    axios.get(`${API_BASE}/manufacturers/${manufacturerId}`).then((response) => {
       commit(MANUFACTURER_BY_ID_SUCCESS, {
         manufacturer: response.data,
       });

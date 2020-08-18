@@ -1,21 +1,18 @@
 <template>
-  <div>
-    <div class="products">
-      <div class="container">
-        This is ProductList
-      </div>
-      <template v-for="product in products">
-        <product-item :product="product" :key="product._id"></product-item>
-      </template>
-    </div>
+  <div class="products">
+    <template v-for="product in products">
+      <product-item
+        :product="product"
+        :key="product._id">
+      </product-item>
+    </template>
   </div>
 </template>
 
 <style scoped>
 .products {
-  padding: 30px;
-  border-bottom: 1px solid #f4f4f4;
-  margin: 50px auto;
+  /* padding: 30px; */
+  margin: 20px auto;
 }
 </style>
 

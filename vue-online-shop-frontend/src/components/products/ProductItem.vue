@@ -11,7 +11,7 @@
           <span class="origin">￥{{origin}}</span>
         </p>
         <p class="product.manufacturer">生产厂商：{{product.manufacturer.name}}</p>
-      <product-button :product="product"></product-button>
+      <product-button :id="product._id"></product-button>
     </div>
   </div>
 </template>
@@ -23,23 +23,31 @@
 }
 
 .box-content {
-  width: 450px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 1.5em;
   line-height: 1.1rem;
+  font-size: 1em;
   box-shadow: rgb(153, 153, 153) 2px 4px 7px;
   border-radius: 6px;
 }
 
+@media screen and (min-width: 500px) {
+  .box-content {
+    padding: 30px;
+  }
+}
+
 .product__image {
-  width: 80%;
-  height: auto;
+  display: block;
+  max-width: 100%;
+  margin-bottom: 10px;
   box-shadow: rgba(0, 0, 0, .2) 2px 4px 7px;
 }
 
 .product__price .promote {
   color: lightcoral;
-  padding-right: 0.3rem;
+  padding-right: 0.5rem;
   font-size: 1.4em;
 }
 

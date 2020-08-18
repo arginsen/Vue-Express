@@ -1,15 +1,9 @@
 <template>
-  <div>
-    <div class="title">
-      <h1>This is Manufacturer Edit</h1>
-    </div>
     <manufacturer-form
-      @save-manufacturer="addManufacturer"
+      @save-manufacturer="updateManufacturer"
       :model="model"
-      :isEditing="true"
-    >
+      :isEditing="true">
     </manufacturer-form>
-  </div>
 </template>
 
 <script>
@@ -17,9 +11,12 @@ import ManufacturerForm from '@/components/manufacturers/ManufacturerForm.vue';
 
 export default {
   created() {
-    this.$store.dispatch('manufacturerById', {
-      manufacturerId: this.$route.params.id,
-    });
+    const { name = '' } = this.model || {};
+    if (!name) {
+      this.$store.dispatch('manufacturerById', {
+        manufacturerId: this.$route.params.id,
+      });
+    }
   },
   computed: {
     model() {
@@ -31,9 +28,9 @@ export default {
     },
   },
   methods: {
-    addManufacturer(model) {
+    updateManufacturer(manufacturer) {
       this.$store.dispatch('updateManufacturer', {
-        manufacturer: model,
+        manufacturer,
       });
     },
   },

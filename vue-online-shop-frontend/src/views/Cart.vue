@@ -1,44 +1,58 @@
 <template>
-  <div>
+  <div class="cart">
     <div class="title">
       <h1>{{ msg }}</h1>
     </div>
     <template v-for="product in cart">
       <product-item :product="product" :key="product._id"></product-item>
     </template>
-    <h3 v-if="sum > 0" class="cart-sum">
-      合计: <span>￥{{ sum }}</span>
-      <button class="settlement">结算</button>
+    <h3 v-if="sum > 0" class="cart-bottom">
+      <span>合计:</span><span class="sum">￥{{ sum }}</span>
+      <a-button class="settlement" type="primary" shape="round">结算</a-button>
+    </h3>
+    <h3 v-else class="cart-empty">
+      <a-icon
+        type="shopping-cart"
+        :style="{ fontSize: '30px', color: '#d0d4da' }" />
+      <div slot="description" class="description">购物车暂无物品...</div>
+      <a href="/">
+        <a-button type="primary">去购物</a-button>
+      </a>
     </h3>
   </div>
 </template>
 
 <style>
-.cart-sum {
+.cart-bottom,
+.cart-bottom > span {
   width: 450px;
-  text-align: right;
+  text-align: center;
   margin: 0 auto;
   padding: 20px 0;
+  vertical-align: middle;
 }
 
-.cart-sum span {
+.cart-bottom > .sum {
   color: lightcoral;
+  font-weight: bold;
+  vertical-align: bottom;
+  font-size: 1.2rem;
 }
 
-.cart-sum .settlement {
+.cart-bottom .settlement {
   margin-left: 20px;
   width: 80px;
-  height: 1.8rem;
-  font-size: 1em;
-  background: lightcoral;
-  color: rgb(242, 246, 250);
-  border: 0;
-  border-radius: 40px;
+  font-size: 1rem;
 }
 
-.cart-sum .settlement:focus {
-  outline: 0;
-  background-color: rgb(240, 104, 104);
+.cart-empty {
+  margin-top: 15%;
+}
+
+.description {
+  margin: 1rem 0 4rem 0;
+  color: #d0d4da;
+  font-size: 13px;
 }
 </style>
 
