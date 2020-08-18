@@ -1,7 +1,7 @@
-import * as express from 'express';
-import { productController } from '../../controllers/product';
-import { manufacturerController } from '../../controllers/manufacturer';
+const express = require('express');
 const router = express.Router();
+const productController = require('../../controllers/product');
+const manufacturerController = require('../../controllers/manufacturer');
 
 // get all manufacturers
 router.get('/manufacturers', manufacturerController.all);
@@ -25,4 +25,4 @@ router.put('/products/:id', productController.update);
 // delete single product
 router.delete('/products/:id', productController.remove);
 
-export default router;
+module.exports = router;

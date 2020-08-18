@@ -1,4 +1,5 @@
-import { Manufacturer } from '../model';
+const Model = require('../model');
+const { Manufacturer } = Model;
 
 // define manufacturerController command
 const manufacturerController = {
@@ -38,4 +39,4 @@ const manufacturerController = {
   }
 }
 
-export { manufacturerController };
+module.exports = manufacturerController;
