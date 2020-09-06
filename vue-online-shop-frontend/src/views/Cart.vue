@@ -57,7 +57,7 @@
 </style>
 
 <script>
-import ProductItem from '@/components/products/ProductItem.vue';
+// import ProductItem from '@/components/products/ProductItem.vue';
 
 export default {
   name: 'Cart',
@@ -80,7 +80,7 @@ export default {
     },
   },
   components: {
-    'product-item': ProductItem,
+    'product-item': () => import('@/components/products/ProductItem'),
   },
 };
 </script>

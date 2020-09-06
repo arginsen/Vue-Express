@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ManufacturerForm from '@/components/manufacturers/ManufacturerForm.vue';
+// import ManufacturerForm from '@/components/manufacturers/ManufacturerForm.vue';
 
 export default {
   created() {
@@ -35,7 +35,7 @@ export default {
     },
   },
   components: {
-    'manufacturer-form': ManufacturerForm,
+    'manufacturer-form': () => import('@/components/manufacturers/ManufacturerForm'),
   },
 };
 </script>

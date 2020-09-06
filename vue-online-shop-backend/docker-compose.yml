@@ -1,0 +1,15 @@
+version:'3'
+
+# 三个服务即对应三个容器
+services:
+  db:
+    image:mongo
+    restart:always
+  api:
+    build:server
+    restart:always
+  nginx:
+    build:client
+    restart:always
+    ports:
+      -8080:80

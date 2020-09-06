@@ -27,8 +27,8 @@
 </style>
 
 <script>
-import ProductCarousel from '@/components/products/ProductCarousel.vue';
-import ProductList from '@/components/products/ProductList.vue';
+// import ProductCarousel from '@/components/products/ProductCarousel.vue';
+// import ProductList from '@/components/products/ProductList.vue';
 
 export default {
   name: 'Home',
@@ -38,8 +38,8 @@ export default {
     };
   },
   components: {
-    'product-list': ProductList,
-    'product-carousel': ProductCarousel,
+    'product-carousel': () => import('@/components/products/ProductCarousel'),
+    'product-list': () => import('@/components/products/ProductList'),
   },
 };
 </script>

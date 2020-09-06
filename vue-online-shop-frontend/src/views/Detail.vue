@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ProductDetail from '@/components/products/ProductDetail.vue';
+// import ProductDetail from '@/components/products/ProductDetail.vue';
 
 export default {
   created() {
@@ -23,7 +23,7 @@ export default {
     },
   },
   components: {
-    'product-detail': ProductDetail,
+    'product-detail': () => import('@/components/products/ProductDetail'),
   },
 };
 </script>
